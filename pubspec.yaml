@@ -1,4 +1,4 @@
-name: better_forms 
+name: better_forms
 description: A library for creating Flutter forms.
 version: 0.0.1-beta1
 homepage: https://github.com/alvarezGarciaMarcos/better_forms
@@ -13,6 +13,7 @@ dependencies:
   cupertino_icons: ^1.0.0
   flutter_bloc: ^6.1.1
   intl: ^0.16.1
+  provider: ^4.3.3
 
 dev_dependencies:
   flutter_test:
