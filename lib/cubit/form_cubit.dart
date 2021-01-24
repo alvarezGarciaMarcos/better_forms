@@ -59,8 +59,7 @@ class BFFormCubit extends Cubit<BFFormCubitState> {
     emit(newState);
   }
 
-  void registerValidators(
-      String fieldName, List<ValidationFunction> validators) {
+  void registerField(String fieldName, List<ValidationFunction> validators) {
     state.fields.putIfAbsent(
         fieldName,
         () => BFFieldState(

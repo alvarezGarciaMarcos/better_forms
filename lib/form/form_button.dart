@@ -1,19 +1,21 @@
+import 'package:better_forms/form/types/types.dart';
 import 'package:flutter/material.dart';
 import 'package:better_forms/utils/fonts.dart';
-
-typedef BFButtonOnPressed = void Function(BuildContext);
 
 class BFButton extends StatelessWidget {
   final BFButtonOnPressed onPressed;
   final String text;
+  final Color color;
+  final Color fontText;
 
   BFButton({
     this.onPressed,
     this.text,
+    this.color,
+    this.fontText,
   });
 
   void _onTap(BuildContext context) {
-    print("Tapped!");
     this.onPressed(context);
   }
 

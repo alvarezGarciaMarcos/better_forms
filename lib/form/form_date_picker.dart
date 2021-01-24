@@ -42,7 +42,6 @@ class _BFDatePickerState extends State<BFDatePicker> {
 
   @override
   Widget build(BuildContext context) {
-    var fullWidth = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: _onDatePickerTapped,
       child: Container(

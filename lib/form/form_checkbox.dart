@@ -32,9 +32,6 @@ class _BFCheckboxState extends State<BFCheckbox> {
   void initState() {
     super.initState();
     this.value = false;
-    context
-        .read<BFFormCubit>()
-        .registerValidators(widget.name, widget.validators);
   }
 
   @override

@@ -28,9 +28,6 @@ class _BFFormFieldState extends State<BFFormField> {
   @override
   void initState() {
     super.initState();
-    context
-        .read<BFFormCubit>()
-        .registerValidators(widget.name, widget.validators);
   }
 
   @override
