@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:form_framework/cubit/form_cubit.dart';
+import 'package:better_forms/cubit/form_cubit.dart';
 import 'package:provider/provider.dart';
-import 'package:form_framework/cubit/types.dart';
-import 'package:form_framework/form/types/types.dart';
-import 'package:form_framework/validators/validators.dart';
+import 'package:better_forms/cubit/types.dart';
+import 'package:better_forms/form/types/types.dart';
+import 'package:better_forms/validators/validators.dart';
 
 class BFCheckbox extends StatefulWidget implements IBFFormField {
   final Text checkboxText;

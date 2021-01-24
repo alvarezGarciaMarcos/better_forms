@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:form_framework/cubit/types.dart';
-import 'package:form_framework/validators/validators.dart';
+import 'package:better_forms/cubit/types.dart';
+import 'package:better_forms/validators/validators.dart';
 
 class BFFieldState {
   String value;

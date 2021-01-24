@@ -1,4 +1,4 @@
-import 'package:form_framework/validators/validators.dart';
+import 'package:better_forms/validators/validators.dart';
 
 enum ValidationState {
   valid,

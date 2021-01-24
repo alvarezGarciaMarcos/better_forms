@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:form_framework/cubit/form_cubit.dart';
-import 'package:form_framework/form/form_button.dart';
-import 'package:form_framework/form/types/types.dart';
-import 'package:form_framework/utils/fonts.dart';
+import 'package:better_forms/cubit/form_cubit.dart';
+import 'package:better_forms/form/form_button.dart';
+import 'package:better_forms/form/types/types.dart';
+import 'package:better_forms/utils/fonts.dart';
 
 typedef OnBFFormSubmitted = void Function(Map<String, String>);
 

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:form_framework/form/types/types.dart';
-import 'package:form_framework/validators/validators.dart';
+import 'package:better_forms/form/types/types.dart';
+import 'package:better_forms/validators/validators.dart';
 
 class BFFormGroup extends StatelessWidget implements IBFFormField {
   final List<IBFFormField> fields;

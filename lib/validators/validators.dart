@@ -1,4 +1,4 @@
-import 'package:form_framework/cubit/types.dart';
+import 'package:better_forms/cubit/types.dart';
 
 typedef ValidationFunction = Validation Function(String);
 

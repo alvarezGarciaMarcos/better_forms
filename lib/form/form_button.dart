@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:form_framework/utils/fonts.dart';
+import 'package:better_forms/utils/fonts.dart';
 
 typedef BFButtonOnPressed = void Function(BuildContext);
 
