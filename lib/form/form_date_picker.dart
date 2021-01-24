@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:form_framework/form/types/types.dart';
+import 'package:form_framework/validators/validators.dart';
 import 'package:intl/intl.dart';
 
 class BFDatePicker extends StatefulWidget implements IBFFormField {
@@ -10,11 +11,14 @@ class BFDatePicker extends StatefulWidget implements IBFFormField {
   final String placeholder;
   final String dateFormat;
   final void Function() onCancel;
+  final String name;
+  final List<ValidationFunction> validators = [];
 
   BFDatePicker({
     @required this.initialDate,
     @required this.startingDate,
     @required this.endDate,
+    @required this.name,
     this.helpText,
     this.placeholder = "Pick a date",
     this.dateFormat = "yyyy-MM-dd",
@@ -33,7 +37,7 @@ class _BFDatePickerState extends State<BFDatePicker> {
   @override
   void initState() {
     super.initState();
-    this.value = "Pick a date";
+    this.value = widget.placeholder;
   }
 
   @override
@@ -42,20 +46,23 @@ class _BFDatePickerState extends State<BFDatePicker> {
     return GestureDetector(
       onTap: _onDatePickerTapped,
       child: Container(
-        padding: EdgeInsets.all(5),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(
-            width: 2,
-            color: Colors.grey,
+        alignment: Alignment.centerLeft,
+        child: InkWell(
+          child: InputDecorator(
+            decoration: InputDecoration(
+              labelText: widget.placeholder,
+              enabled: true,
+            ),
+            child: Container(
+              padding: EdgeInsets.only(
+                top: 8,
+              ),
+              height: 30,
+              child: Text(
+                this.value,
+              ),
+            ),
           ),
-        ),
-        width: fullWidth,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(this.value),
-          ],
         ),
       ),
     );

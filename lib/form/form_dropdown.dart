@@ -1,13 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:form_framework/form/types/types.dart';
+import 'package:form_framework/validators/validators.dart';
+
+class BFDropdownItem<T> {
+  T value;
+  String displayValue;
+
+  BFDropdownItem({
+    this.displayValue,
+    this.value,
+  });
+}
 
 class BFDropdown<T> extends StatefulWidget implements IBFFormField {
-  final List<T> items;
+  final List<BFDropdownItem<T>> items;
   final T initialValue;
+  final String name;
+  final String hint;
+  final List<ValidationFunction> validators = [];
 
   BFDropdown({
     @required this.items,
-    @required this.initialValue,
+    @required this.name,
+    this.hint = "Make a selection",
+    this.initialValue,
   });
 
   @override
@@ -37,14 +53,16 @@ class _BFDropdownState<T> extends State<BFDropdown> {
             horizontal: 8,
           ),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              border: Border.all(
-                width: 2,
-                color: Colors.black,
-              )),
+            borderRadius: BorderRadius.circular(15),
+            border: Border.all(
+              width: 2,
+              color: Colors.black,
+            ),
+          ),
           width: MediaQuery.of(context).size.width,
           child: DropdownButtonHideUnderline(
               child: DropdownButton<T>(
+            hint: Text(widget.hint),
             isExpanded: true,
             value: value,
             style: TextStyle(
@@ -57,9 +75,9 @@ class _BFDropdownState<T> extends State<BFDropdown> {
             },
             items: widget.items.map((value) {
               return DropdownMenuItem<T>(
-                value: value,
+                value: value.value,
                 child: Text(
-                  value.toString(),
+                  value.displayValue.toString(),
                   overflow: TextOverflow.fade,
                 ),
               );
@@ -68,12 +86,6 @@ class _BFDropdownState<T> extends State<BFDropdown> {
         ),
         SizedBox(
           height: 5,
-        ),
-        Text(
-          "This is an error",
-          style: TextStyle(
-            color: Colors.red,
-          ),
         ),
       ],
     );

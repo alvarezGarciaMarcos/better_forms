@@ -5,6 +5,8 @@ import 'package:form_framework/form/form_date_picker.dart';
 import 'package:form_framework/form/form_dropdown.dart';
 import 'package:form_framework/form/form_field.dart';
 import 'package:form_framework/form/form_group.dart';
+import 'package:form_framework/utils/fonts.dart';
+import 'package:form_framework/validators/validators.dart';
 
 void main() {
   runApp(MyApp());
@@ -43,19 +45,62 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: BFForm(
-                title: "Contact",
+                onSubmit: (map) =>
+                    {if (map == null) print("Cannot post") else print(map)},
+                title: Text(
+                  "Contact",
+                  style: TextStyle(
+                    fontSize: Fonts.xlFont,
+                  ),
+                ),
                 fields: [
-                  BFFormField(hintText: "Email"),
+                  BFFormField(
+                    validators: [
+                      Validators.isANumber,
+                    ],
+                    title: "Nombre",
+                    name: "name",
+                  ),
                   BFFormGroup(
                     fields: [
-                      BFFormField(hintText: "Surname"),
-                      BFFormField(hintText: "Second Surname"),
-                      BFFormField(hintText: "Another Surname"),
-                      BFDropdown<String>(
-                        items: ["One", "Two"],
-                        initialValue: "One",
+                      BFFormField(
+                        validators: [
+                          Validators.isANumber,
+                        ],
+                        name: "surname",
+                        title: "Primer apellido",
+                      ),
+                      BFFormField(
+                        validators: [
+                          Validators.isANumber,
+                        ],
+                        title: "Segundo apellido",
+                        name: "second_surname",
+                      ),
+                      BFDropdown<int>(
+                        hint: "Tipo de documento",
+                        name: "birth_date",
+                        items: [
+                          BFDropdownItem(value: 1, displayValue: "DNI"),
+                          BFDropdownItem(value: 2, displayValue: "Pasaporte"),
+                          BFDropdownItem(
+                              value: 3, displayValue: "Tarjeta de refugiado"),
+                        ],
+                      ),
+                      BFFormField(
+                        title: "Documento",
+                        name: "document",
+                      ),
+                      BFFormField(
+                        validators: [
+                          Validators.isANumber,
+                        ],
+                        title: "Teléfono",
+                        name: "phone",
                       ),
                       BFDatePicker(
+                        placeholder: "Fecha de nacimiento",
+                        name: "birthdate",
                         dateFormat: "dd-MM-yyyy",
                         initialDate: DateTime.now(),
                         startingDate: DateTime.now().subtract(
@@ -63,22 +108,64 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         endDate: DateTime.now().add(Duration(days: 3600)),
                       ),
-                      BFDropdown<String>(
-                        items: ["One", "Two"],
-                        initialValue: "One",
+                      BFFormField(
+                        name: "direccion",
+                        title: "Dirección",
                       ),
-                      BFFormField(hintText: "Surname"),
-                      BFFormField(hintText: "Second Surname"),
-                      BFFormField(hintText: "Another Surname"),
                     ],
                   ),
-                  BFCheckbox(),
-                  BFDatePicker(
-                    initialDate: DateTime.now(),
-                    startingDate: DateTime.now().subtract(
-                      Duration(days: 365),
+                  BFFormGroup(
+                    fields: [
+                      BFFormField(name: "city", title: "Ciudad"),
+                      BFDropdown<int>(
+                        hint: "Género",
+                        items: [
+                          BFDropdownItem(value: 1, displayValue: "Femenino"),
+                          BFDropdownItem(value: 2, displayValue: "Masculino"),
+                        ],
+                        name: "gender",
+                      ),
+                    ],
+                  ),
+                  BFDropdown<int>(
+                      hint: "Selecciona un país",
+                      items: [
+                        BFDropdownItem(value: 1, displayValue: "España"),
+                        BFDropdownItem(value: 2, displayValue: "Fracia"),
+                        BFDropdownItem(value: 3, displayValue: "Alemania"),
+                      ],
+                      name: "country"),
+                  BFFormGroup(
+                    columns: 1,
+                    title: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 8.0,
+                      ),
+                      child: Text(
+                        "Cuenta de usuario",
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 0, 0, 136),
+                          fontSize: Fonts.bigFont,
+                        ),
+                      ),
                     ),
-                    endDate: DateTime.now().add(Duration(days: 3650)),
+                    fields: [
+                      BFFormField(
+                        name: "email",
+                        title: "Email",
+                      ),
+                      BFFormField(
+                        isPassword: true,
+                        name: "password",
+                        title: "Contraseña",
+                      ),
+                    ],
+                  ),
+                  BFCheckbox(
+                    validators: [Validators.isTrue],
+                    name: "term_and_conditions",
+                    checkboxText: Text(
+                        "By checking this box you agree with our terms and conditions."),
                   ),
                 ],
               ),
@@ -88,4 +175,12 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+}
+
+Widget _buildContainer(Color color) {
+  return Container(
+    width: 50,
+    height: 50,
+    color: color,
+  );
 }

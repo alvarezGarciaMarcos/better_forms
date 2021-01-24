@@ -1,12 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:form_framework/form/types/types.dart';
+import 'package:form_framework/validators/validators.dart';
 
 class BFFormGroup extends StatelessWidget implements IBFFormField {
   final List<IBFFormField> fields;
   final double horizontalSpacing;
   final double verticalSpacing;
   final int columns;
-  final String title;
+  final Widget title;
+  final String name = "";
+  final List<ValidationFunction> validators = [];
 
   BFFormGroup({
     this.fields = const [],
@@ -18,11 +21,15 @@ class BFFormGroup extends StatelessWidget implements IBFFormField {
   @override
   Widget build(BuildContext context) {
     var chunks = _createChunks(fields, columns);
-    return Column(
-      children: [
-        if (this.title != null) Text(this.title),
-        ..._buildFormRow(chunks, horizontalSpacing, verticalSpacing, columns)
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(top: 18.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (this.title != null) this.title,
+          ..._buildFormRow(chunks, horizontalSpacing, verticalSpacing, columns)
+        ],
+      ),
     );
   }
 }
@@ -31,6 +38,7 @@ List<Widget> _buildFormRow(List<List<IBFFormField>> rows,
     double horizontalSpacing, double verticalSpacing, int numberOfColumns) {
   var newRows = rows
       .map((futureRow) => Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: futureRow
                 .asMap()
                 .entries
@@ -49,12 +57,13 @@ List<Widget> _buildFormRow(List<List<IBFFormField>> rows,
 }
 
 Widget _buildChild(
-    IBFFormField field,
-    double verticalSpacing,
-    double horizontalSpacing,
-    int currentIndex,
-    int totalElements,
-    int numberOfColumns) {
+  IBFFormField field,
+  double verticalSpacing,
+  double horizontalSpacing,
+  int currentIndex,
+  int totalElements,
+  int numberOfColumns,
+) {
   var leftChild = Expanded(
     child: new Padding(
       padding: EdgeInsets.only(
@@ -100,7 +109,8 @@ Widget _buildChild(
   } else if (currentIndex > 0 && currentIndex < totalElements - 1) {
     return middleChild;
   } else if (currentIndex == totalElements - 1 &&
-      numberOfColumns == totalElements) {
+      numberOfColumns == totalElements &&
+      numberOfColumns != 1) {
     return rightChild;
   } else {
     return singleChild;
