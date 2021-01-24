@@ -78,7 +78,7 @@ class _BFDatePickerState extends State<BFDatePicker> {
 
     if (datetime != null) {
       setState(() {
-        this.value = DateFormat('yyyy-MM-dd').format(datetime);
+        this.value = DateFormat(widget.dateFormat).format(datetime);
       });
     } else if (widget.onCancel != null) {
       widget.onCancel();
