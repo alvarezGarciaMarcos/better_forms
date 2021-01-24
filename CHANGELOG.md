@@ -1,3 +1,6 @@
+# better_forms 0.0.1-beta3+1
+- README has been updated with a little bit of info about usage
+
 # better_forms 0.0.1-beta3
 - Users can now use custo date format
 
