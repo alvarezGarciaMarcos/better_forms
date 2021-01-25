@@ -1,3 +1,6 @@
+# better_forms 0.0.1-beta4
+- Added compatibility with intl 0.17.0-nullsafety.2
+
 # better_forms 0.0.1-beta3+1
 - README has been updated with a little bit of info about usage
 
