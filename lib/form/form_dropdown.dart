@@ -1,6 +1,9 @@
+import 'package:better_forms/cubit/form_cubit.dart';
+import 'package:better_forms/cubit/types.dart';
 import 'package:flutter/material.dart';
 import 'package:better_forms/form/types/types.dart';
 import 'package:better_forms/validators/validators.dart';
+import 'package:provider/provider.dart';
 
 class BFDropdownItem<T> {
   T value;
@@ -68,11 +71,7 @@ class _BFDropdownState<T> extends State<BFDropdown> {
             style: TextStyle(
               color: Colors.black,
             ),
-            onChanged: (T newValue) {
-              setState(() {
-                value = newValue;
-              });
-            },
+            onChanged: (newValue) => this._onChanged(newValue, context),
             items: widget.items.map((value) {
               return DropdownMenuItem<T>(
                 value: value.value,
@@ -89,5 +88,17 @@ class _BFDropdownState<T> extends State<BFDropdown> {
         ),
       ],
     );
+  }
+
+  void _onChanged(T newValue, BuildContext context) {
+    context.read<BFFormCubit>().updateField(
+        widget.name,
+        newValue.toString(),
+        Validation(
+          state: ValidationState.valid,
+        ));
+    setState(() {
+      value = newValue;
+    });
   }
 }

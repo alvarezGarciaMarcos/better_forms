@@ -1,7 +1,10 @@
+import 'package:better_forms/cubit/form_cubit.dart';
+import 'package:better_forms/cubit/types.dart';
 import 'package:flutter/material.dart';
 import 'package:better_forms/form/types/types.dart';
 import 'package:better_forms/validators/validators.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class BFDatePicker extends StatefulWidget implements IBFFormField {
   final DateTime initialDate;
@@ -43,7 +46,7 @@ class _BFDatePickerState extends State<BFDatePicker> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: _onDatePickerTapped,
+      onTap: () => _onDatePickerTapped(context),
       child: Container(
         alignment: Alignment.centerLeft,
         child: InkWell(
@@ -67,7 +70,7 @@ class _BFDatePickerState extends State<BFDatePicker> {
     );
   }
 
-  void _onDatePickerTapped() async {
+  void _onDatePickerTapped(BuildContext context) async {
     DateTime datetime = await showDatePicker(
       context: context,
       initialDate: widget.initialDate,
@@ -77,8 +80,15 @@ class _BFDatePickerState extends State<BFDatePicker> {
     );
 
     if (datetime != null) {
+      var timeString = DateFormat(widget.dateFormat).format(datetime);
+      context.read<BFFormCubit>().updateField(
+          widget.name,
+          timeString,
+          Validation(
+            state: ValidationState.valid,
+          ));
       setState(() {
-        this.value = DateFormat(widget.dateFormat).format(datetime);
+        this.value = timeString;
       });
     } else if (widget.onCancel != null) {
       widget.onCancel();

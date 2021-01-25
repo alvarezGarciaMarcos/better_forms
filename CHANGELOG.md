@@ -1,3 +1,7 @@
+# better_forms 0.0.1-beta10
+- Checkboxes are registered automatically as part of the form
+- Dropdowns are registered automatically as part of the form
+
 # better_forms 0.0.1-beta9
 - Added the ability of registering fields inside BFFormGroup automatically
 
