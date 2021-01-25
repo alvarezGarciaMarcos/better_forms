@@ -2,7 +2,7 @@
 
 This is a simple library to help building forms in Flutter.
 
-# Usage
+# Example
 This is an example of how to use this package to create a pretty simple form.
 
 ````dart
