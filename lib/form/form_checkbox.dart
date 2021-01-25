@@ -7,13 +7,15 @@ import 'package:better_forms/form/types/types.dart';
 import 'package:better_forms/validators/validators.dart';
 
 class BFCheckbox extends StatefulWidget implements IBFFormField {
-  final Text checkboxText;
+  final Widget checkboxText;
   final String name;
   final List<ValidationFunction> validators;
+  final bool isTextTappable;
 
   BFCheckbox({
     @required this.name,
     this.validators = const [],
+    this.isTextTappable = true,
     this.checkboxText = const Text(
       "This is some complex text. Lorem impsum et emet oh baby oh baby why keep it spinning",
     ),
@@ -47,10 +49,9 @@ class _BFCheckboxState extends State<BFCheckbox> {
                 onChanged: (value) => _onChanged(value, ctx),
               ),
               Flexible(
-                child: GestureDetector(
-                  onTap: () => _onChanged(!this.value, ctx),
-                  child: widget.checkboxText,
-                ),
+                child: widget.isTextTappable
+                    ? _buildTextWithGestureDetector(ctx)
+                    : _buildTextWithoutGestureDetector(),
               ),
             ],
           ),
@@ -67,6 +68,17 @@ class _BFCheckboxState extends State<BFCheckbox> {
         ],
       ),
     );
+  }
+
+  Widget _buildTextWithGestureDetector(BuildContext ctx) {
+    return GestureDetector(
+      onTap: () => _onChanged(!this.value, ctx),
+      child: widget.checkboxText,
+    );
+  }
+
+  Widget _buildTextWithoutGestureDetector() {
+    return widget.checkboxText;
   }
 
   void _onChanged(bool newValue, BuildContext context) {

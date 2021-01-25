@@ -10,11 +10,11 @@ typedef OnBFFormSubmitted = void Function(Map<String, String>);
 /// Class in charge of registering all the fields of the [BFForm]
 /// to be registered on the [BFFormCubit]
 ///
-class _BFFieldRegister extends StatefulWidget {
+class BFFieldRegister extends StatefulWidget {
   final Widget child;
   final List<IBFFormField> fields;
 
-  _BFFieldRegister({
+  BFFieldRegister({
     @required this.child,
     @required this.fields,
   });
@@ -24,7 +24,7 @@ class _BFFieldRegister extends StatefulWidget {
   }
 }
 
-class _BFFieldRegisterState extends State<_BFFieldRegister> {
+class _BFFieldRegisterState extends State<BFFieldRegister> {
   @override
   void initState() {
     super.initState();
@@ -99,28 +99,23 @@ class _BFFormState extends State<BFForm> {
         .toList();
 
     return _BFFormCubitProvider(
-      child: _BFFieldRegister(
+      child: BFFieldRegister(
         fields: widget.fields,
-        child: SingleChildScrollView(
-          physics: AlwaysScrollableScrollPhysics(),
-          child: Column(
-            children: [
-              if (widget.title != null)
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    widget.title,
-                  ],
-                ),
-              ...elements,
-              SizedBox(
-                height: 20,
+        child: Column(
+          children: [
+            if (widget.title != null)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  widget.title,
+                ],
               ),
-              (widget.button != null)
-                  ? _buildUserButton()
-                  : _buildDefaultButton()
-            ],
-          ),
+            ...elements,
+            SizedBox(
+              height: 20,
+            ),
+            (widget.button != null) ? _buildUserButton() : _buildDefaultButton()
+          ],
         ),
       ),
     );

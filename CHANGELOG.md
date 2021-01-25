@@ -1,3 +1,15 @@
+# better_forms 0.0.1-beta9
+- Added the ability of registering fields inside BFFormGroup automatically
+
+# better_forms 0.0.1-beta8
+- Now, text in checkboxes can be touchable or not
+
+# better_forms 0.0.1-beta7
+- Added the posibility to add a Widget as text for a Checkbox
+
+# better_forms 0.0.1-beta6
+- Deleted SingleChildScrollView causing problems
+
 # better_forms 0.0.1-beta5
 - Fixed some errors related to BFCheckbox
 

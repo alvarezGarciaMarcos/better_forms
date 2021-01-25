@@ -1,3 +1,4 @@
+import 'package:better_forms/form/form.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:better_forms/form/types/types.dart';
 import 'package:better_forms/validators/validators.dart';
@@ -21,14 +22,18 @@ class BFFormGroup extends StatelessWidget implements IBFFormField {
   @override
   Widget build(BuildContext context) {
     var chunks = _createChunks(fields, columns);
-    return Padding(
-      padding: const EdgeInsets.only(top: 18.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          if (this.title != null) this.title,
-          ..._buildFormRow(chunks, horizontalSpacing, verticalSpacing, columns)
-        ],
+    return BFFieldRegister(
+      fields: this.fields,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 18.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (this.title != null) this.title,
+            ..._buildFormRow(
+                chunks, horizontalSpacing, verticalSpacing, columns)
+          ],
+        ),
       ),
     );
   }
