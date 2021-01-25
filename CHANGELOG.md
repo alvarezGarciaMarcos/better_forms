@@ -1,3 +1,6 @@
+# better_forms 0.0.1-beta5
+- Fixed some errors related to BFCheckbox
+
 # better_forms 0.0.1-beta4
 - Added compatibility with intl 0.17.0-nullsafety.2
 

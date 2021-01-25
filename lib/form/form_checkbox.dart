@@ -71,13 +71,19 @@ class _BFCheckboxState extends State<BFCheckbox> {
 
   void _onChanged(bool newValue, BuildContext context) {
     Validation validation;
-    for (var validator in widget.validators) {
-      var v = validator(newValue.toString());
-      if (v.state == ValidationState.invalid) {
-        validation = v;
-        break;
-      } else {
-        validation = Validation(state: ValidationState.valid);
+    if (widget.validators == null || widget.validators.length == 0) {
+      validation = Validation(
+        state: ValidationState.valid,
+      );
+    } else {
+      for (var validator in widget.validators) {
+        var v = validator(newValue.toString());
+        if (v.state == ValidationState.invalid) {
+          validation = v;
+          break;
+        } else {
+          validation = Validation(state: ValidationState.valid);
+        }
       }
     }
     context
