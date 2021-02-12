@@ -1,3 +1,6 @@
+# better_forms 0.0.1-beta10+1
+- Added an example to the README
+
 # better_forms 0.0.1-beta10
 - Checkboxes are registered automatically as part of the form
 - Dropdowns are registered automatically as part of the form
