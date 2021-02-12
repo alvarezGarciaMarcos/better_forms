@@ -1,3 +1,6 @@
+# better_forms 0.0.2
+- Added the possibility to use aymmetric field groups
+
 # better_forms 0.0.1-beta10+1
 - Added an example to the README
 
