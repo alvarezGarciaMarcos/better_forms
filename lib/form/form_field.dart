@@ -10,12 +10,14 @@ class BFFormField extends StatefulWidget implements IBFFormField {
   final String name;
   final List<ValidationFunction> validators;
   final bool isPassword;
+  final int flex;
 
   BFFormField({
     @required this.name,
     this.title,
     this.validators = const [],
     this.isPassword = false,
+    this.flex = 1,
   });
 
   @override

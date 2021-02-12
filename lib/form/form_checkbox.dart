@@ -9,8 +9,9 @@ import 'package:better_forms/validators/validators.dart';
 class BFCheckbox extends StatefulWidget implements IBFFormField {
   final Widget checkboxText;
   final String name;
-  final List<ValidationFunction> validators;
   final bool isTextTappable;
+  final int flex;
+  final List<ValidationFunction> validators;
 
   BFCheckbox({
     @required this.name,
@@ -19,6 +20,7 @@ class BFCheckbox extends StatefulWidget implements IBFFormField {
     this.checkboxText = const Text(
       "This is some complex text. Lorem impsum et emet oh baby oh baby why keep it spinning",
     ),
+    this.flex = 1,
   });
 
   @override

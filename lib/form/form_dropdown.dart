@@ -10,8 +10,8 @@ class BFDropdownItem<T> {
   String displayValue;
 
   BFDropdownItem({
-    this.displayValue,
-    this.value,
+    @required this.displayValue,
+    @required this.value,
   });
 }
 
@@ -20,6 +20,7 @@ class BFDropdown<T> extends StatefulWidget implements IBFFormField {
   final T initialValue;
   final String name;
   final String hint;
+  final int flex;
   final List<ValidationFunction> validators = [];
 
   BFDropdown({
@@ -27,6 +28,7 @@ class BFDropdown<T> extends StatefulWidget implements IBFFormField {
     @required this.name,
     this.hint = "Make a selection",
     this.initialValue,
+    this.flex = 1,
   });
 
   @override
