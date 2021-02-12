@@ -5,6 +5,7 @@ import '../form.dart';
 
 abstract class IBFFormField extends Widget {
   String get name;
+  int get flex;
   List<ValidationFunction> get validators;
 }
 

@@ -15,6 +15,7 @@ class BFDatePicker extends StatefulWidget implements IBFFormField {
   final String dateFormat;
   final void Function() onCancel;
   final String name;
+  final int flex;
   final List<ValidationFunction> validators = [];
 
   BFDatePicker({
@@ -26,6 +27,7 @@ class BFDatePicker extends StatefulWidget implements IBFFormField {
     this.placeholder = "Pick a date",
     this.dateFormat = "yyyy-MM-dd",
     this.onCancel,
+    this.flex = 1,
   });
 
   @override

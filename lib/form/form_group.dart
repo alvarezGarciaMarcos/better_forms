@@ -11,6 +11,7 @@ class BFFormGroup extends StatelessWidget implements IBFFormField {
   final Widget title;
   final String name = "";
   final List<ValidationFunction> validators = [];
+  final flex = 1;
 
   BFFormGroup({
     this.fields = const [],
@@ -70,6 +71,7 @@ Widget _buildChild(
   int numberOfColumns,
 ) {
   var leftChild = Expanded(
+    flex: field.flex,
     child: new Padding(
       padding: EdgeInsets.only(
         right: verticalSpacing,
@@ -80,6 +82,7 @@ Widget _buildChild(
   );
 
   var rightChild = Expanded(
+    flex: field.flex,
     child: new Padding(
       padding: EdgeInsets.only(
         left: verticalSpacing,
@@ -90,6 +93,7 @@ Widget _buildChild(
   );
 
   var middleChild = Expanded(
+    flex: field.flex,
     child: new Padding(
       padding: EdgeInsets.only(
         left: verticalSpacing,
@@ -101,6 +105,7 @@ Widget _buildChild(
   );
 
   var singleChild = Expanded(
+    flex: field.flex,
     child: new Padding(
       padding: EdgeInsets.only(
         bottom: horizontalSpacing,
