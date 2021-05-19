@@ -1,5 +1,4 @@
 import 'package:better_forms/form/form.dart';
-import 'package:better_forms/form/form_date_picker.dart';
 import 'package:better_forms/form/form_dropdown.dart';
 import 'package:better_forms/form/form_field.dart';
 import 'package:better_forms/form/form_group.dart';
@@ -25,7 +24,7 @@ class MyApp extends StatelessWidget {
 
 class MyForm extends StatelessWidget {
   void _onSubmit(Map<String, String> map) {
-    print(map);
+    print(map["name"]);
   }
 
   @override
@@ -54,7 +53,7 @@ class MyForm extends StatelessWidget {
                     title: "First surname",
                   ),
                   BFFormField(
-                    name: "surname",
+                    name: "second_surname",
                     title: "Second surname",
                   ),
                   BFDropdown(
@@ -64,9 +63,10 @@ class MyForm extends StatelessWidget {
                       BFDropdownItem<String>(value: "+90", displayValue: "+90")
                     ],
                     name: "prefix",
+                    hint: "Prefix",
                   ),
                   BFFormField(
-                    flex: 3,
+                    flex: 2,
                     name: "phone",
                     title: "Phone",
                   )

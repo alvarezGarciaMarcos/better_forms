@@ -5,6 +5,8 @@ This is a simple library to help building forms in Flutter.
 # Example
 This is an example of how to use this package to create a pretty simple form.
 
+_Note: for a complete working example, you can refer to the main.dart file in the repository_
+
 ````dart
 class MyForm extends StatelessWidget {
   void _onSubmit(Map<String, String> map) {
@@ -26,40 +28,33 @@ class MyForm extends StatelessWidget {
             ),
             onSubmit: _onSubmit,
             fields: [
+              BFFormField(
+                name: "name",
+                title: "Name",
+              ),
               BFFormGroup(
                 fields: [
-                  BFFormField(
-                    name: "name",
-                    title: "Name",
-                  ),
                   BFFormField(
                     name: "surname",
-                    title: "Surname",
+                    title: "First surname",
                   ),
-                ],
-              ),
-              BFFormField(
-                name: "address",
-                title: "Address",
-              ),
-              BFFormGroup(
-                fields: [
-                  BFDropdown<int>(
+                  BFFormField(
+                    name: "second_surname",
+                    title: "Second surname",
+                  ),
+                  BFDropdown(
+                    flex: 1,
                     items: [
-                      BFDropdownItem(displayValue: "Male", value: 1),
-                      BFDropdownItem(displayValue: "Female", value: 2),
+                      BFDropdownItem<String>(value: "+34", displayValue: "+34"),
+                      BFDropdownItem<String>(value: "+90", displayValue: "+90")
                     ],
-                    hint: "Gender",
-                    name: "gender",
+                    name: "prefix",
+                    hint: "Prefix",
                   ),
-                  BFDatePicker(
-                    dateFormat: "yyyy/MM/dd",
-                    initialDate: DateTime.now(),
-                    startingDate:
-                        DateTime.now().subtract(Duration(days: 360 * 30)),
-                    endDate: DateTime.now().add(Duration(days: 360 * 10)),
-                    name: "birthdate",
-                    placeholder: "Birthdate",
+                  BFFormField(
+                    flex: 2,
+                    name: "phone",
+                    title: "Phone",
                   )
                 ],
               ),

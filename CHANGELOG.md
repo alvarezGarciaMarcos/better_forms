@@ -1,3 +1,7 @@
+# better_forms 0.0.2-beta2
+- Upgraded 'provider' version to 5.0.0
+- Enhacement of the example provided
+
 # better_forms 0.0.2-beta1
 - Added the possibility to use aymmetric field groups
 
